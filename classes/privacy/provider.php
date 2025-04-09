@@ -23,5 +23,21 @@
  * @copyright 2025, Andrew Hancox
  */
 
-$string['pluginname'] = 'View activity by ID Number';
-$string['privacy:metadata'] = 'The local activitybyidnumber plugin does not store any personal data.';
+namespace local_activitybyidnumber\privacy;
+
+use core_privacy\local\legacy_polyfill;
+use core_privacy\local\metadata\null_provider;
+
+class provider implements null_provider {
+    use legacy_polyfill;
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}
